@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RoyalTaste - Fine Dining</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#C9A227'
+                    },
+                    fontFamily: {
+                        heading: ['Playfair Display', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* SCROLL REVEAL SYSTEM */
+       .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+       .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+       .reveal-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+       .reveal-left.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+       .reveal-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+       .reveal-right.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+       .delay-1 { transition-delay: 0.1s; }
+       .delay-2 { transition-delay: 0.2s; }
+       .delay-3 { transition-delay: 0.3s; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px) }
+            to { opacity: 1; transform: translateY(0) }
+        }
+       .animate-fade { animation: fadeIn 0.3s ease }
+    </style>
+</head>
+
+<body class="bg-black text-white font-sans">
+    <!-- <div id="loader" class="fixed inset-0 bg-black z-[9999] flex items-center justify-center transition-opacity duration-700">
+        <div class="text-center">
+            <h1 class="text-4xl md:text-6xl font-heading text-primary animate-pulse">RoyalTaste</h1>
+            <div class="mt-6 w-16 h-16 border-4 border-primary border-t-transparent rounded-full animate-spin mx-auto"></div>
+            <p class="text-gray-400 mt-4 tracking-[4px] text-sm">LOADING EXPERIENCE</p>
+        </div>
+    </div> -->
+    <nav class="fixed top-0 w-full bg-black/80 backdrop-blur-xl border-b border-primary/20 z-50 shadow-lg shadow-black/50">
+    <div class="max-w-7xl mx-auto px-4 md:px-6 py-4 md:py-5 flex justify-between items-center">
+        <a href="index.html" class="text-2xl md:text-3xl font-heading text-primary font-bold tracking-wide">RoyalTaste</a>
+
+        <ul class="hidden md:flex gap-10">
+            <li><a href="index.html" class="hover:text-primary transition-colors duration-300 font-medium">Home</a></li>
+            <li><a href="index.html#menu" class="hover:text-primary transition-colors duration-300 font-medium">Menu</a></li>
+            <li><a href="gallery.html" class="hover:text-primary transition-colors duration-300 font-medium">Gallery</a></li>
+            <li><a href="about.html" class="hover:text-primary transition-colors duration-300 font-medium">About</a></li>
+            <li><a href="events.html" class="hover:text-primary transition-colors duration-300 font-medium">Events</a></li>
+            <li><a href="index.html#contact" class="hover:text-primary transition-colors duration-300 font-medium">Contact</a></li>
+        </ul>
+
+        <button id="menuBtn" class="md:hidden text-2xl text-primary hover:scale-110 duration-300">☰</button>
+    </div>
+</nav>
+
+    <div id="mobileMenu" class="fixed top-0 right-[-100%] w-72 h-screen bg-white text-black transition-all duration-500 p-8 z-[60] shadow-2xl">
+    <div class="flex justify-end mb-12">
+        <button id="closeBtn" class="text-3xl text-black hover:text-primary hover:rotate-90 duration-300">✕</button>
+    </div>
+    <h2 class="text-xl font-heading font-bold text-black mb-10 tracking-[0.3em]">Royal<span class="text-primary">Taste</span></h2>
+    <ul class="space-y-2">
+        <li><a href="index.html" class="group flex items-center justify-between text-lg font-medium py-4 border-b border-zinc-200 hover:border-primary transition-all duration-300"><span class="group-hover:text-primary group-hover:translate-x-2 transition-all duration-300">Home</span><span class="text-primary text-sm opacity-0 group-hover:opacity-100 transition-all duration-300">→</span></a></li>
+        <li><a href="index.html#menu" class="group flex items-center justify-between text-lg font-medium py-4 border-b border-zinc-200 hover:border-primary transition-all duration-300"><span class="group-hover:text-primary group-hover:translate-x-2 transition-all duration-300">Menu</span><span class="text-primary text-sm opacity-0 group-hover:opacity-100 transition-all duration-300">→</span></a></li>
+        <li><a href="gallery.html" class="group flex items-center justify-between text-lg font-medium py-4 border-b border-zinc-200 hover:border-primary transition-all duration-300"><span class="group-hover:text-primary group-hover:translate-x-2 transition-all duration-300">Gallery</span><span class="text-primary text-sm opacity-0 group-hover:opacity-100 transition-all duration-300">→</span></a></li>
+        <li><a href="about.html" class="group flex items-center justify-between text-lg font-medium py-4 border-b border-zinc-200 hover:border-primary transition-all duration-300"><span class="group-hover:text-primary group-hover:translate-x-2 transition-all duration-300">About</span><span class="text-primary text-sm opacity-0 group-hover:opacity-100 transition-all duration-300">→</span></a></li>
+        <li><a href="events.html" class="group flex items-center justify-between text-lg font-medium py-4 border-b border-zinc-200 hover:border-primary transition-all duration-300"><span class="group-hover:text-primary group-hover:translate-x-2 transition-all duration-300">Events</span><span class="text-primary text-sm opacity-0 group-hover:opacity-100 transition-all duration-300">→</span></a></li>
+        <li><a href="index.html#contact" class="group flex items-center justify-between text-lg font-medium py-4 border-b border-zinc-200 hover:border-primary transition-all duration-300"><span class="group-hover:text-primary group-hover:translate-x-2 transition-all duration-300">Contact</span><span class="text-primary text-sm opacity-0 group-hover:opacity-100 transition-all duration-300">→</span></a></li>
+    </ul>
+</div>
+
+    <section id="home" class="pt-28 md:pt-32 pb-16 md:pb-20 text-center overflow-hidden px-4 reveal">
+        <p class="text-primary uppercase tracking-[4px] md:tracking-[6px] text-xs md:text-base">Welcome To RoyalTaste</p>
+        <h2 class="text-4xl md:text-7xl font-heading font-bold mt-3 md:mt-4 reveal delay-1">Experience Fine Dining</h2>
+        <p class="text-gray-400 mt-4 md:mt-6 max-w-2xl mx-auto text-sm md:text-base reveal delay-2">Where every dish tells a story and every meal becomes a memory</p>
+        <a href="#menu" class="inline-block mt-6 md:mt-8 bg-primary text-black px-8 md:px-10 py-3 md:py-4 rounded-full font-semibold hover:scale-105 duration-300 text-sm md:text-base reveal delay-3">View Menu</a>
+    </section>
+
+    <section class="py-16 md:py-24 px-4 reveal">
+        <div class="max-w-7xl mx-auto">
+            <p class="text-primary uppercase tracking-[4px] md:tracking-[6px] text-center text-xs md:text-base">Special Selection</p>
+            <h2 class="text-3xl md:text-5xl font-heading font-bold text-center mt-2 md:mt-3">Featured Dishes</h2>
+            <div class="grid md:grid-cols-3 gap-6 md:gap-10 mt-10 md:mt-16">
+                <div class="bg-zinc-900 rounded-2xl md:rounded-3xl overflow-hidden reveal delay-1">
+                    <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&q=80" class="w-full h-56 md:h-72 object-cover" alt="">
+                    <div class="p-5 md:p-6">
+                        <h3 class="text-xl md:text-2xl font-heading">Grilled Steak</h3>
+                        <p class="text-gray-400 mt-2 md:mt-3 text-sm md:text-base">Premium beef grilled to perfection</p>
+                        <div class="flex justify-between items-center mt-4 md:mt-6">
+                            <span class="text-primary text-xl md:text-2xl font-bold">$28</span>
+                            <button class="orderBtn bg-primary text-black px-4 md:px-5 py-2 rounded-full hover:scale-105 duration-300 text-sm" data-name="Grilled Steak">Order</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-zinc-900 rounded-2xl md:rounded-3xl overflow-hidden reveal delay-2">
+                    <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=900&q=80" class="w-full h-56 md:h-72 object-cover" alt="">
+                    <div class="p-5 md:p-6">
+                        <h3 class="text-xl md:text-2xl font-heading">Italian Pizza</h3>
+                        <p class="text-gray-400 mt-2 md:mt-3 text-sm md:text-base">Wood fired authentic Italian pizza</p>
+                        <div class="flex justify-between items-center mt-4 md:mt-6">
+                            <span class="text-primary text-xl md:text-2xl font-bold">$20</span>
+                            <button class="orderBtn bg-primary text-black px-4 md:px-5 py-2 rounded-full hover:scale-105 duration-300 text-sm" data-name="Italian Pizza">Order</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-zinc-900 rounded-2xl md:rounded-3xl overflow-hidden reveal delay-3">
+                    <img src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=900&q=80" class="w-full h-56 md:h-72 object-cover" alt="">
+                    <div class="p-5 md:p-6">
+                        <h3 class="text-xl md:text-2xl font-heading">Seafood Pasta</h3>
+                        <p class="text-gray-400 mt-2 md:mt-3 text-sm md:text-base">Fresh seafood with homemade pasta</p>
+                        <div class="flex justify-between items-center mt-4 md:mt-6">
+                            <span class="text-primary text-xl md:text-2xl font-bold">$24</span>
+                            <button class="orderBtn bg-primary text-black px-4 md:px-5 py-2 rounded-full hover:scale-105 duration-300 text-sm" data-name="Seafood Pasta">Order</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="menu" class="py-16 md:py-24 bg-zinc-950 px-4 reveal">
+        <div class="max-w-7xl mx-auto">
+            <p class="text-primary uppercase tracking-[4px] md:tracking-[6px] text-center text-xs md:text-base">Our Menu</p>
+            <h2 class="text-3xl md:text-5xl font-heading font-bold text-center mt-2 md:mt-3">Delicious Dishes</h2>
+            <div class="flex justify-center gap-3 md:gap-4 mt-8 md:mt-10 flex-wrap reveal delay-1">
+                <button class="menu-btn bg-primary text-black px-5 md:px-6 py-2.5 md:py-3 rounded-full text-sm md:text-base" data-category="all">All</button>
+                <button class="menu-btn border border-primary px-5 md:px-6 py-2.5 md:py-3 rounded-full text-sm md:text-base" data-category="starter">Starters</button>
+                <button class="menu-btn border border-primary px-5 md:px-6 py-2.5 md:py-3 rounded-full text-sm md:text-base" data-category="main">Main Course</button>
+                <button class="menu-btn border border-primary px-5 md:px-6 py-2.5 md:py-3 rounded-full text-sm md:text-base" data-category="dessert">Desserts</button>
+            </div>
+            <div id="menuContainer" class="grid md:grid-cols-3 gap-6 md:gap-10 mt-10 md:mt-16"></div>
+        </div>
+    </section>
+
+    <section id="chef" class="py-16 md:py-24 px-4 reveal">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+            <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=900&q=80" class="rounded-2xl md:rounded-3xl reveal-left" alt="">
+            <div class="reveal-right">
+                <p class="text-primary uppercase tracking-[4px] md:tracking-[6px] text-xs md:text-base">Meet Our Chef</p>
+                <h2 class="text-3xl md:text-5xl font-heading font-bold mt-2 md:mt-3">Chef Antonio</h2>
+                <p class="text-gray-400 mt-4 md:mt-6 leading-7 md:leading-8 text-sm md:text-base">15 years of culinary excellence. Trained in Paris and Milan, bringing world flavors to your plate.</p>
+                <button class="mt-6 md:mt-8 bg-primary text-black px-6 md:px-8 py-3 md:py-4 rounded-full font-semibold hover:scale-105 duration-300 text-sm md:text-base">Discover Our Story</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 md:py-24 bg-zinc-950 px-4 reveal">
+        <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10 text-center">
+            <div><h3 class="text-3xl md:text-5xl font-heading text-primary counter" data-target="2500">0</h3><p class="text-gray-400 mt-1 md:mt-2 text-xs md:text-base">Happy Customers</p></div>
+            <div><h3 class="text-3xl md:text-5xl font-heading text-primary counter" data-target="50">0</h3><p class="text-gray-400 mt-1 md:mt-2 text-xs md:text-base">Menu Items</p></div>
+            <div><h3 class="text-3xl md:text-5xl font-heading text-primary counter" data-target="15">0</h3><p class="text-gray-400 mt-1 md:mt-2 text-xs md:text-base">Years Experience</p></div>
+            <div><h3 class="text-3xl md:text-5xl font-heading text-primary counter" data-target="12">0</h3><p class="text-gray-400 mt-1 md:mt-2 text-xs md:text-base">Awards Won</p></div>
+        </div>
+    </section>
+
+    <section class="py-16 md:py-24 px-4 reveal">
+        <div class="max-w-7xl mx-auto">
+            <p class="text-primary uppercase tracking-[4px] md:tracking-[6px] text-center text-xs md:text-base">Testimonials</p>
+            <h2 class="text-3xl md:text-5xl font-heading font-bold text-center mt-2 md:mt-3">What People Say</h2>
+            <div id="reviewContainer" class="grid md:grid-cols-3 gap-6 md:gap-10 mt-10 md:mt-16"></div>
+        </div>
+    </section>
+
+    <section id="reservation" class="py-16 md:py-24 bg-zinc-950 px-4 reveal">
+        <div class="max-w-3xl mx-auto">
+            <p class="text-primary uppercase tracking-[4px] md:tracking-[6px] text-center text-xs md:text-base">Reservation</p>
+            <h2 class="text-3xl md:text-5xl font-heading font-bold text-center mt-2 md:mt-3">Book A Table</h2>
+            <form class="mt-8 md:mt-12 space-y-4 md:space-y-6">
+                <input type="text" placeholder="Your Name" class="w-full bg-zinc-900 p-3 md:p-4 rounded-xl outline-none text-sm md:text-base" required>
+                <input type="email" placeholder="Your Email" class="w-full bg-zinc-900 p-3 md:p-4 rounded-xl outline-none text-sm md:text-base" required>
+                <button class="w-full bg-primary text-black py-3 md:py-4 rounded-xl font-semibold text-sm md:text-base">Reserve Table</button>
+            </form>
+        </div>
+    </section>
+
+    <section id="contact" class="py-16 md:py-24 px-4 reveal">
+        <div class="max-w-3xl mx-auto">
+            <p class="text-primary uppercase tracking-[4px] md:tracking-[6px] text-center text-xs md:text-base">Contact Us</p>
+            <h2 class="text-3xl md:text-5xl font-heading font-bold text-center mt-2 md:mt-3">Get In Touch</h2>
+            <form class="mt-8 md:mt-12 space-y-4 md:space-y-6">
+                <input type="text" placeholder="Your Name" class="w-full bg-zinc-900 p-3 md:p-4 rounded-xl outline-none text-sm md:text-base" required>
+                <input type="email" placeholder="Your Email" class="w-full bg-zinc-900 p-3 md:p-4 rounded-xl outline-none text-sm md:text-base" required>
+                <textarea placeholder="Your Message" rows="5" class="w-full bg-zinc-900 p-3 md:p-4 rounded-xl outline-none text-sm md:text-base" required></textarea>
+                <button class="w-full bg-primary text-black py-3 md:py-4 rounded-xl font-semibold text-sm md:text-base">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <section class="py-16 md:py-20 bg-primary text-black px-4 reveal">
+        <div class="max-w-3xl mx-auto text-center">
+            <h2 class="text-2xl md:text-4xl font-heading font-bold">Join Our Newsletter</h2>
+            <p class="mt-3 md:mt-4 text-sm md:text-base">Get updates on new dishes and special offers</p>
+            <div class="flex flex-col sm:flex-row mt-6 md:mt-8 gap-3 md:gap-4">
+                <input type="email" placeholder="Enter your email" class="flex-1 p-3 md:p-4 rounded-xl outline-none text-black text-sm md:text-base">
+                <button class="bg-black text-primary px-6 md:px-8 py-3 md:py-4 rounded-xl font-semibold hover:scale-105 duration-300 whitespace-nowrap text-sm md:text-base">Subscribe</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="story" class="py-16 md:py-24 bg-zinc-950 hidden px-4">
+        <div class="max-w-4xl mx-auto text-center">
+            <p class="text-primary uppercase tracking-[4px] md:tracking-[6px] text-xs md:text-base">Our Journey</p>
+            <h2 class="text-3xl md:text-5xl font-heading font-bold mt-2 md:mt-3">The RoyalTaste Story</h2>
+            <p class="text-gray-400 mt-6 md:mt-8 leading-7 md:leading-8 text-sm md:text-base">RoyalTaste started in 2011 with one goal: bring luxury dining to everyone. From a small kitchen to now serving over 2500 happy customers, we never compromised on quality.</p>
+            <p class="text-gray-400 mt-4 md:mt-6 leading-7 md:leading-8 text-sm md:text-base">Our chefs travel the world to learn new techniques, but always keep the heart of traditional cooking. Every dish is made with love and premium ingredients.</p>
+            <button id="backHome" class="mt-8 md:mt-10 bg-primary text-black px-6 md:px-8 py-3 md:py-4 rounded-full font-semibold hover:scale-105 duration-300 text-sm md:text-base">Back To Home</button>
+        </div>
+    </section>
+
+    <footer class="bg-black border-t border-zinc-800">
+        <div class="max-w-7xl mx-auto px-4 md:px-6 py-8 md:py-10">
+            <div class="grid md:grid-cols-3 gap-8 md:gap-10">
+                <div><h2 class="text-2xl md:text-3xl font-heading text-primary font-bold">RoyalTaste</h2><p class="text-gray-400 mt-4 md:mt-5 text-sm md:text-base">Fine dining with exceptional service and unforgettable moments.</p></div>
+                <div><h3 class="text-lg md:text-xl font-semibold">Quick Links</h3><ul class="space-y-2 md:space-y-3 mt-4 md:mt-6 text-gray-400 text-sm md:text-base"><li><a href="#home" class="hover:text-primary">Home</a></li><li><a href="#menu" class="hover:text-primary">Menu</a></li><li><a href="#chef" class="hover:text-primary">Chef</a></li><li><a href="#contact" class="hover:text-primary">Contact</a></li></ul></div>
+                <div><h3 class="text-lg md:text-xl font-semibold">Follow Us</h3><div class="flex gap-3 md:gap-4 mt-4 md:mt-6"><a href="#" class="bg-zinc-900 w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center hover:bg-primary hover:text-black duration-300">F</a><a href="#" class="bg-zinc-900 w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center hover:bg-primary hover:text-black duration-300">I</a><a href="#" class="bg-zinc-900 w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center hover:bg-primary hover:text-black duration-300">X</a></div></div>
+            </div>
+            <div class="border-t border-zinc-800 mt-8 md:mt-10 pt-6 text-center text-gray-500 text-sm">© 2026 RoyalTaste. All Rights Reserved.</div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
