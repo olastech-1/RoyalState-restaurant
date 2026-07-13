@@ -79,6 +79,7 @@
                 transform: translateY(0)
             }
         }
+        html, body { overflow-x: hidden; }
 
         .animate-fade {
             animation: fadeIn 0.3s ease
@@ -120,45 +121,45 @@
     </nav>
 
     <div id="mobileMenu"
-        class="fixed top-0 right-[-100%] w-72 h-screen bg-white text-black transition-all duration-500 p-8 z-[60] shadow-2xl">
-        <div class="flex justify-end mb-12">
-            <button id="closeBtn" class="text-3xl text-black hover:text-primary hover:rotate-90 duration-300">✕</button>
-        </div>
-        <h2 class="text-xl font-heading font-bold text-black mb-10 tracking-[0.3em]">Royal<span
-                class="text-primary">Taste</span></h2>
-        <ul class="space-y-2">
-            <li><a href="index.html"
-                    class="group flex items-center justify-between text-lg font-medium py-4 border-b border-zinc-200 hover:border-primary transition-all duration-300"><span
-                        class="group-hover:text-primary group-hover:translate-x-2 transition-all duration-300">Home</span><span
-                        class="text-primary text-sm opacity-0 group-hover:opacity-100 transition-all duration-300">→</span></a>
-            </li>
-            <li><a href="index.html#menu"
-                    class="group flex items-center justify-between text-lg font-medium py-4 border-b border-zinc-200 hover:border-primary transition-all duration-300"><span
-                        class="group-hover:text-primary group-hover:translate-x-2 transition-all duration-300">Menu</span><span
-                        class="text-primary text-sm opacity-0 group-hover:opacity-100 transition-all duration-300">→</span></a>
-            </li>
-            <li><a href="gallery.html"
-                    class="group flex items-center justify-between text-lg font-medium py-4 border-b border-zinc-200 hover:border-primary transition-all duration-300"><span
-                        class="group-hover:text-primary group-hover:translate-x-2 transition-all duration-300">Gallery</span><span
-                        class="text-primary text-sm opacity-0 group-hover:opacity-100 transition-all duration-300">→</span></a>
-            </li>
-            <li><a href="about.html"
-                    class="group flex items-center justify-between text-lg font-medium py-4 border-b border-zinc-200 hover:border-primary transition-all duration-300"><span
-                        class="group-hover:text-primary group-hover:translate-x-2 transition-all duration-300">About</span><span
-                        class="text-primary text-sm opacity-0 group-hover:opacity-100 transition-all duration-300">→</span></a>
-            </li>
-            <li><a href="events.html"
-                    class="group flex items-center justify-between text-lg font-medium py-4 border-b border-zinc-200 hover:border-primary transition-all duration-300"><span
-                        class="group-hover:text-primary group-hover:translate-x-2 transition-all duration-300">Events</span><span
-                        class="text-primary text-sm opacity-0 group-hover:opacity-100 transition-all duration-300">→</span></a>
-            </li>
-            <li><a href="index.html#contact"
-                    class="group flex items-center justify-between text-lg font-medium py-4 border-b border-zinc-200 hover:border-primary transition-all duration-300"><span
-                        class="group-hover:text-primary group-hover:translate-x-2 transition-all duration-300">Contact</span><span
-                        class="text-primary text-sm opacity-0 group-hover:opacity-100 transition-all duration-300">→</span></a>
-            </li>
-        </ul>
+    class="fixed top-0 right-[-100%] w- max-w-80 h-screen bg-white text-black transition-all duration-500 p-8 z-[60] shadow-2xl">
+    <div class="flex justify-end mb-12">
+        <button id="closeBtn" class="text-3xl text-black hover:text-primary hover:rotate-90 duration-300">✕</button>
     </div>
+    <h2 class="text-xl font-heading font-bold text-black mb-10 tracking-[0.3em]">Royal<span
+            class="text-primary">Taste</span></h2>
+    <ul class="space-y-2">
+        <li><a href="index.html"
+                class="group flex items-center justify-between text-lg font-medium py-4 border-b border-zinc-200 hover:border-primary transition-all duration-300"><span
+                    class="group-hover:text-primary group-hover:translate-x-2 transition-all duration-300">Home</span><span
+                    class="text-primary text-sm opacity-0 group-hover:opacity-100 transition-all duration-300">→</span></a>
+        </li>
+        <li><a href="index.html#menu"
+                class="group flex items-center justify-between text-lg font-medium py-4 border-b border-zinc-200 hover:border-primary transition-all duration-300"><span
+                    class="group-hover:text-primary group-hover:translate-x-2 transition-all duration-300">Menu</span><span
+                    class="text-primary text-sm opacity-0 group-hover:opacity-100 transition-all duration-300">→</span></a>
+        </li>
+        <li><a href="gallery.html"
+                class="group flex items-center justify-between text-lg font-medium py-4 border-b border-zinc-200 hover:border-primary transition-all duration-300"><span
+                    class="group-hover:text-primary group-hover:translate-x-2 transition-all duration-300">Gallery</span><span
+                    class="text-primary text-sm opacity-0 group-hover:opacity-100 transition-all duration-300">→</span></a>
+        </li>
+        <li><a href="about.html"
+                class="group flex items-center justify-between text-lg font-medium py-4 border-b border-zinc-200 hover:border-primary transition-all duration-300"><span
+                    class="group-hover:text-primary group-hover:translate-x-2 transition-all duration-300">About</span><span
+                    class="text-primary text-sm opacity-0 group-hover:opacity-100 transition-all duration-300">→</span></a>
+        </li>
+        <li><a href="events.html"
+                class="group flex items-center justify-between text-lg font-medium py-4 border-b border-zinc-200 hover:border-primary transition-all duration-300"><span
+                    class="group-hover:text-primary group-hover:translate-x-2 transition-all duration-300">Events</span><span
+                    class="text-primary text-sm opacity-0 group-hover:opacity-100 transition-all duration-300">→</span></a>
+        </li>
+        <li><a href="index.html#contact"
+                class="group flex items-center justify-between text-lg font-medium py-4 border-b border-zinc-200 hover:border-primary transition-all duration-300"><span
+                    class="group-hover:text-primary group-hover:translate-x-2 transition-all duration-300">Contact</span><span
+                    class="text-primary text-sm opacity-0 group-hover:opacity-100 transition-all duration-300">→</span></a>
+        </li>
+    </ul>
+</div>
 
     <section id="home" class="pt-28 md:pt-32 pb-16 md:pb-20 text-center overflow-hidden px-4 reveal">
         <p class="text-primary uppercase tracking-[4px] md:tracking-[6px] text-xs md:text-base">Welcome To RoyalTaste
