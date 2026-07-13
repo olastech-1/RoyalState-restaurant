@@ -1,36 +1,55 @@
 // LOADER
+document.body.classList.add('loading');
 window.addEventListener("load", function () {
   let loader = document.getElementById("loader");
   if (loader) {
     setTimeout(function () {
       loader.style.opacity = "0";
+      document.body.classList.remove('loading'); // allow scroll
       setTimeout(function () {
         loader.style.display = "none";
+        initHomepageAnimations(); // trigger hero
       }, 700);
-    }, 1200); // 1.2s minimum load time so people can see it
+    }, 1200);
   }
 });
 
+// FUNCTION TO ANIMATE HOMEPAGE ONLY ONCE
+function initHomepageAnimations() {
+    const homeElements = document.querySelectorAll('#home.reveal');
+    homeElements.forEach((el, i) => {
+        setTimeout(() => {
+            el.classList.add('active');
+        }, i * 200);
+    });
+}
+
+// FULLSCREEN MOBILE MENU
 let menuBtn = document.getElementById("menuBtn");
 let closeBtn = document.getElementById("closeBtn");
 let mobileMenu = document.getElementById("mobileMenu");
 
 if(menuBtn && mobileMenu){
   menuBtn.addEventListener("click", () => {
-    mobileMenu.style.right = "0";
+    mobileMenu.classList.remove("translate-x-full"); // show
+    document.body.style.overflow = 'hidden'; // lock scroll
   });
 }
 
 if(closeBtn && mobileMenu){
   closeBtn.addEventListener("click", () => {
-    mobileMenu.style.right = "-100%";
+    mobileMenu.classList.add("translate-x-full"); // hide
+    document.body.style.overflow = ''; // unlock scroll
   });
 }
 
 let mobileLinks = document.querySelectorAll("#mobileMenu a");
 mobileLinks.forEach(link => {
   link.addEventListener("click", () => {
-    if(mobileMenu) mobileMenu.style.right = "-100%";
+    if(mobileMenu) {
+      mobileMenu.classList.add("translate-x-full");
+      document.body.style.overflow = '';
+    }
   });
 });
 
@@ -77,7 +96,7 @@ function displayMenu(foodList){
     </div>`;
   });
   attachOrderEvents();
-  revealOnScroll(); // re-run for new items
+  // revealOnScroll(); <- DELETE THIS LINE
 }
 
 if(menuContainer){ displayMenu(foods); }
