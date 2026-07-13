@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,41 +18,106 @@
         }
     </script>
     <style>
-      .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
-      .reveal.active { opacity: 1; transform: translateY(0); }
-      .delay-1 { transition-delay: 0.1s; }.delay-2 { transition-delay: 0.2s; }.delay-3 { transition-delay: 0.3s; }
-      .gallery-img { cursor: pointer; }
-       #lightbox { backdrop-filter: blur(10px); }
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .delay-1 {
+            transition-delay: 0.1s;
+        }
+
+        .delay-2 {
+            transition-delay: 0.2s;
+        }
+
+        .delay-3 {
+            transition-delay: 0.3s;
+        }
+
+        .gallery-img {
+            cursor: pointer;
+        }
+
+        #lightbox {
+            backdrop-filter: blur(10px);
+        }
     </style>
 </head>
+
 <body class="bg-black text-white font-sans">
 
-    <nav class="fixed top-0 w-full bg-black/80 backdrop-blur-xl border-b border-primary/20 z-50">
+    <nav
+        class="fixed top-0 w-full bg-black/80 backdrop-blur-xl border-b border-primary/20 z-50 shadow-lg shadow-black/50">
         <div class="max-w-7xl mx-auto px-4 md:px-6 py-4 md:py-5 flex justify-between items-center">
-            <a href="index.html" class="text-2xl md:text-3xl font-heading text-primary font-bold tracking-wide">RoyalTaste</a>
+            <a href="index.html"
+                class="text-2xl md:text-3xl font-heading text-primary font-bold tracking-wide">RoyalTaste</a>
+
             <ul class="hidden md:flex gap-10">
-                <li><a href="index.html" class="hover:text-primary">Home</a></li>
-                <li><a href="menu.html" class="hover:text-primary">Menu</a></li>
-                <li><a href="gallery.html" class="text-primary">Gallery</a></li>
-                <li><a href="about.html" class="hover:text-primary">About</a></li>
-                <li><a href="events.html" class="hover:text-primary">Events</a></li>
-                <li><a href="index.html#contact" class="hover:text-primary">Contact</a></li>
+                <li><a href="index.html" class="hover:text-primary transition-colors duration-300 font-medium">Home</a>
+                </li>
+                <li><a href="index.html#menu"
+                        class="hover:text-primary transition-colors duration-300 font-medium">Menu</a></li>
+                <li><a href="gallery.html"
+                        class="hover:text-primary transition-colors duration-300 font-medium">Gallery</a></li>
+                <li><a href="about.html" class="hover:text-primary transition-colors duration-300 font-medium">About</a>
+                </li>
+                <li><a href="events.html"
+                        class="hover:text-primary transition-colors duration-300 font-medium">Events</a></li>
+                <li><a href="index.html#contact"
+                        class="hover:text-primary transition-colors duration-300 font-medium">Contact</a></li>
             </ul>
-            <button id="menuBtn" class="md:hidden text-2xl text-primary">☰</button>
+
+            <button id="menuBtn" class="md:hidden text-2xl text-primary hover:scale-110 duration-300">☰</button>
         </div>
     </nav>
 
-    <div id="mobileMenu" class="fixed top-0 right-[-100%] w-72 h-screen bg-white text-black transition-all duration-500 p-8 z-[60]">
-        <div class="flex justify-end mb-12"><button id="closeBtn" class="text-3xl">✕</button></div>
+    <div id="mobileMenu"
+        class="fixed top-0 right-[-100%] w-72 h-screen bg-white text-black transition-all duration-500 p-8 z-[60] shadow-2xl">
+        <div class="flex justify-end mb-12">
+            <button id="closeBtn" class="text-3xl text-black hover:text-primary hover:rotate-90 duration-300">✕</button>
+        </div>
+        <h2 class="text-xl font-heading font-bold text-black mb-10 tracking-[0.3em]">Royal<span
+                class="text-primary">Taste</span></h2>
         <ul class="space-y-2">
-            <li><a href="index.html" class="text-lg font-medium py-4 border-b border-zinc-200 block">Home</a></li>
-            <li><a href="menu.html" class="text-lg font-medium py-4 border-b border-zinc-200 block">Menu</a></li>
-            <li><a href="gallery.html" class="text-lg font-medium py-4 border-b border-primary text-primary block">Gallery</a></li>
-            <li><a href="about.html" class="text-lg font-medium py-4 border-b border-zinc-200 block">About</a></li>
-            <li><a href="events.html" class="text-lg font-medium py-4 border-b border-zinc-200 block">Events</a></li>
+            <li><a href="index.html"
+                    class="group flex items-center justify-between text-lg font-medium py-4 border-b border-zinc-200 hover:border-primary transition-all duration-300"><span
+                        class="group-hover:text-primary group-hover:translate-x-2 transition-all duration-300">Home</span><span
+                        class="text-primary text-sm opacity-0 group-hover:opacity-100 transition-all duration-300">→</span></a>
+            </li>
+            <li><a href="index.html#menu"
+                    class="group flex items-center justify-between text-lg font-medium py-4 border-b border-zinc-200 hover:border-primary transition-all duration-300"><span
+                        class="group-hover:text-primary group-hover:translate-x-2 transition-all duration-300">Menu</span><span
+                        class="text-primary text-sm opacity-0 group-hover:opacity-100 transition-all duration-300">→</span></a>
+            </li>
+            <li><a href="gallery.html"
+                    class="group flex items-center justify-between text-lg font-medium py-4 border-b border-zinc-200 hover:border-primary transition-all duration-300"><span
+                        class="group-hover:text-primary group-hover:translate-x-2 transition-all duration-300">Gallery</span><span
+                        class="text-primary text-sm opacity-0 group-hover:opacity-100 transition-all duration-300">→</span></a>
+            </li>
+            <li><a href="about.html"
+                    class="group flex items-center justify-between text-lg font-medium py-4 border-b border-zinc-200 hover:border-primary transition-all duration-300"><span
+                        class="group-hover:text-primary group-hover:translate-x-2 transition-all duration-300">About</span><span
+                        class="text-primary text-sm opacity-0 group-hover:opacity-100 transition-all duration-300">→</span></a>
+            </li>
+            <li><a href="events.html"
+                    class="group flex items-center justify-between text-lg font-medium py-4 border-b border-zinc-200 hover:border-primary transition-all duration-300"><span
+                        class="group-hover:text-primary group-hover:translate-x-2 transition-all duration-300">Events</span><span
+                        class="text-primary text-sm opacity-0 group-hover:opacity-100 transition-all duration-300">→</span></a>
+            </li>
+            <li><a href="index.html#contact"
+                    class="group flex items-center justify-between text-lg font-medium py-4 border-b border-zinc-200 hover:border-primary transition-all duration-300"><span
+                        class="group-hover:text-primary group-hover:translate-x-2 transition-all duration-300">Contact</span><span
+                        class="text-primary text-sm opacity-0 group-hover:opacity-100 transition-all duration-300">→</span></a>
+            </li>
         </ul>
     </div>
-
     <section class="pt-32 pb-16 text-center px-4 reveal">
         <p class="text-primary uppercase tracking-[6px] text-sm">Our Moments</p>
         <h1 class="text-5xl md:text-7xl font-heading font-bold mt-3">Gallery</h1>
@@ -59,14 +125,30 @@
 
     <section class="pb-24 px-4">
         <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-            <div class="reveal delay-1 overflow-hidden rounded-2xl"><img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=900&q=80" class="gallery-img w-full h-64 md:h-80 object-cover hover:scale-110 duration-700" alt=""></div>
-            <div class="reveal delay-2 overflow-hidden rounded-2xl"><img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&q=80" class="gallery-img w-full h-64 md:h-80 object-cover hover:scale-110 duration-700" alt=""></div>
-            <div class="reveal delay-3 overflow-hidden rounded-2xl"><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=900&q=80" class="gallery-img w-full h-64 md:h-80 object-cover hover:scale-110 duration-700" alt=""></div>
-            <div class="reveal delay-1 overflow-hidden rounded-2xl"><img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=900&q=80" class="gallery-img w-full h-64 md:h-80 object-cover hover:scale-110 duration-700" alt=""></div>
-            <div class="reveal delay-2 overflow-hidden rounded-2xl"><img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=900&q=80" class="gallery-img w-full h-64 md:h-80 object-cover hover:scale-110 duration-700" alt=""></div>
-            <div class="reveal delay-3 overflow-hidden rounded-2xl"><img src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=900&q=80" class="gallery-img w-full h-64 md:h-80 object-cover hover:scale-110 duration-700" alt=""></div>
-            <div class="reveal delay-1 overflow-hidden rounded-2xl"><img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=900&q=80" class="gallery-img w-full h-64 md:h-80 object-cover hover:scale-110 duration-700" alt=""></div>
-            <div class="reveal delay-2 overflow-hidden rounded-2xl"><img src="https://images.unsplash.com/photo-1572695157366-5e585ab2b69f?auto=format&fit=crop&w=900&q=80" class="gallery-img w-full h-64 md:h-80 object-cover hover:scale-110 duration-700" alt=""></div>
+            <div class="reveal delay-1 overflow-hidden rounded-2xl"><img
+                    src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=900&q=80"
+                    class="gallery-img w-full h-64 md:h-80 object-cover hover:scale-110 duration-700" alt=""></div>
+            <div class="reveal delay-2 overflow-hidden rounded-2xl"><img
+                    src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&q=80"
+                    class="gallery-img w-full h-64 md:h-80 object-cover hover:scale-110 duration-700" alt=""></div>
+            <div class="reveal delay-3 overflow-hidden rounded-2xl"><img
+                    src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=900&q=80"
+                    class="gallery-img w-full h-64 md:h-80 object-cover hover:scale-110 duration-700" alt=""></div>
+            <div class="reveal delay-1 overflow-hidden rounded-2xl"><img
+                    src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=900&q=80"
+                    class="gallery-img w-full h-64 md:h-80 object-cover hover:scale-110 duration-700" alt=""></div>
+            <div class="reveal delay-2 overflow-hidden rounded-2xl"><img
+                    src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=900&q=80"
+                    class="gallery-img w-full h-64 md:h-80 object-cover hover:scale-110 duration-700" alt=""></div>
+            <div class="reveal delay-3 overflow-hidden rounded-2xl"><img
+                    src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=900&q=80"
+                    class="gallery-img w-full h-64 md:h-80 object-cover hover:scale-110 duration-700" alt=""></div>
+            <div class="reveal delay-1 overflow-hidden rounded-2xl"><img
+                    src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=900&q=80"
+                    class="gallery-img w-full h-64 md:h-80 object-cover hover:scale-110 duration-700" alt=""></div>
+            <div class="reveal delay-2 overflow-hidden rounded-2xl"><img
+                    src="https://images.unsplash.com/photo-1572695157366-5e585ab2b69f?auto=format&fit=crop&w=900&q=80"
+                    class="gallery-img w-full h-64 md:h-80 object-cover hover:scale-110 duration-700" alt=""></div>
         </div>
     </section>
 
@@ -78,13 +160,36 @@
     <footer class="bg-black border-t border-zinc-800">
         <div class="max-w-7xl mx-auto px-4 md:px-6 py-8 md:py-10">
             <div class="grid md:grid-cols-3 gap-8 md:gap-10">
-                <div><h2 class="text-2xl md:text-3xl font-heading text-primary font-bold">RoyalTaste</h2><p class="text-gray-400 mt-4 md:mt-5 text-sm md:text-base">Fine dining with exceptional service and unforgettable moments.</p></div>
-                <div><h3 class="text-lg md:text-xl font-semibold">Quick Links</h3><ul class="space-y-2 md:space-y-3 mt-4 md:mt-6 text-gray-400 text-sm md:text-base"><li><a href="#home" class="hover:text-primary">Home</a></li><li><a href="#menu" class="hover:text-primary">Menu</a></li><li><a href="#chef" class="hover:text-primary">Chef</a></li><li><a href="#contact" class="hover:text-primary">Contact</a></li></ul></div>
-                <div><h3 class="text-lg md:text-xl font-semibold">Follow Us</h3><div class="flex gap-3 md:gap-4 mt-4 md:mt-6"><a href="#" class="bg-zinc-900 w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center hover:bg-primary hover:text-black duration-300">F</a><a href="#" class="bg-zinc-900 w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center hover:bg-primary hover:text-black duration-300">I</a><a href="#" class="bg-zinc-900 w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center hover:bg-primary hover:text-black duration-300">X</a></div></div>
+                <div>
+                    <h2 class="text-2xl md:text-3xl font-heading text-primary font-bold">RoyalTaste</h2>
+                    <p class="text-gray-400 mt-4 md:mt-5 text-sm md:text-base">Fine dining with exceptional service and
+                        unforgettable moments.</p>
+                </div>
+                <div>
+                    <h3 class="text-lg md:text-xl font-semibold">Quick Links</h3>
+                    <ul class="space-y-2 md:space-y-3 mt-4 md:mt-6 text-gray-400 text-sm md:text-base">
+                        <li><a href="#home" class="hover:text-primary">Home</a></li>
+                        <li><a href="#menu" class="hover:text-primary">Menu</a></li>
+                        <li><a href="#chef" class="hover:text-primary">Chef</a></li>
+                        <li><a href="#contact" class="hover:text-primary">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg md:text-xl font-semibold">Follow Us</h3>
+                    <div class="flex gap-3 md:gap-4 mt-4 md:mt-6"><a href="#"
+                            class="bg-zinc-900 w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center hover:bg-primary hover:text-black duration-300">F</a><a
+                            href="#"
+                            class="bg-zinc-900 w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center hover:bg-primary hover:text-black duration-300">I</a><a
+                            href="#"
+                            class="bg-zinc-900 w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center hover:bg-primary hover:text-black duration-300">X</a>
+                    </div>
+                </div>
             </div>
-            <div class="border-t border-zinc-800 mt-8 md:mt-10 pt-6 text-center text-gray-500 text-sm">© 2026 RoyalTaste. All Rights Reserved.</div>
+            <div class="border-t border-zinc-800 mt-8 md:mt-10 pt-6 text-center text-gray-500 text-sm">© 2026
+                RoyalTaste. All Rights Reserved.</div>
         </div>
     </footer>
     <script src="script.js"></script>
 </body>
+
 </html>
